@@ -38,7 +38,7 @@ ul > li .flex {
   /* padding: 0.8em 0; */
   border-radius: 20px;
   box-shadow: 5px 5px 0px 5px darkgreen;
-  width: 35%;
+  width: 30%;
 }
 
 ul {
@@ -47,7 +47,7 @@ ul {
 
 ul > li img {
   border-radius: 100%;
-  width: 40%;
+  width: 30%;
   padding: 40px;
 }
 
