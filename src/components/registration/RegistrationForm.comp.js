@@ -25,14 +25,13 @@ const RegistrationForm = () => {
   const [formErrors, setFormErrors] = useState({});
   const [error, setError] = useState("");
 
-  const { username, email, password } = formValues;
+  const { username, email, password, confirmpassword } = formValues;
 
   const navigate = useNavigate();
 
-
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
+    const { id, value } = e.target;
+    setFormValues({ ...formValues, [id]: value });
   };
 
   const handleSubmit = async (e) => {
@@ -44,8 +43,9 @@ const RegistrationForm = () => {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
           email,
-          password
-        )
+          password,
+          confirmpassword
+        );
 
         const user = userCredential.user;
         updateProfile(auth.currentUser, { username: username });
@@ -110,9 +110,9 @@ const RegistrationForm = () => {
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
-                name="username"
+                id="username"
                 placeholder="Username"
-                value={formValues.username}
+                value={username}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -122,9 +122,9 @@ const RegistrationForm = () => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                name="email"
+                id="email"
                 placeholder="Email"
-                value={formValues.email}
+                value={email}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -134,9 +134,9 @@ const RegistrationForm = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                name="password"
+                id="password"
                 placeholder="Password"
-                value={formValues.password}
+                value={password}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -146,9 +146,9 @@ const RegistrationForm = () => {
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
                 type="password"
-                name="confirmpassword"
+                id="confirmpassword"
                 placeholder="ConfirmPassword"
-                value={formValues.connfirmpassword}
+                value={confirmpassword}
                 onChange={handleChange}
               />
             </Form.Group>
